@@ -1,32 +1,41 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { CartProvider } from './pages/checkout/CartContext';
-import Layout from './layouts/Layout';
-import ProductCatalog from './pages/home/ProductCatalog';
-import CheckoutPage from './pages/checkout/CheckoutPage';
-import { Home } from './pages/home/Home';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './pages/checkout/AuthProvider';
-import Login from './pages/Login';
-import SignupDelivery from './pages/SignupDelivery';
-import SearchResults from './pages/SearchResults';
-
-export const App = () => {
+import CartProvider from './pages/checkout/CartContext';
+import Home from './pages/Home/Home';
+import SeasonalFruits from './pages/fruits/seasonal';
+import ExoticFruits from './pages/fruits/ExoticFruits'; 
+import OrganicFruits from './pages/fruits/OrganicFruits';
+import FreshVegetables from './pages/vegetables/FreshVegetables';
+import OrganicVegetables from './pages/vegetables/OrganicVegetables';
+import RootVegetables from './pages/vegetables/RootVegetables';
+import SeasonalVegetables from './pages/vegetables/SeasonalVegetables';
+import FruitsVeg from './pages/vegetables/FruitsVeg';
+// import Navbar from "./components/layouts/Navbar.jsx"
+const App = () => {
   return (
-    <AuthProvider>
-    <CartProvider>
-      <Router>
-        <Layout>
+    <Router>
+      <AuthProvider>
+        <CartProvider>
+          <Toaster position="top-right" />
+          
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignupDelivery />} />
-              <Route path="/search" element={<SearchResults />} />
+            <Route path="/seasonalfruits" element={<SeasonalFruits />} />
+            <Route path="/exoticfruits" element={<ExoticFruits />} /> 
+            <Route path="/organicfruits" element={<OrganicFruits />} /> 
+            <Route path="/organicvegetables" element={<OrganicVegetables />} /> 
+            <Route path="/freshvegetables" element={<FreshVegetables />} /> 
+            <Route path="/rootvegetables" element={<RootVegetables />} /> 
+            <Route path="/seasonals" element={<SeasonalVegetables/>} />
+            <Route path="/fruitsveg" element={<FruitsVeg/>} />
+            
           </Routes>
-        </Layout>
-      </Router>
-    </CartProvider>
-    </AuthProvider>
+
+        </CartProvider>
+      </AuthProvider>
+    </Router>
   );
 };
 
